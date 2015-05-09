@@ -7,6 +7,8 @@ public class EnemyAI : MonoBehaviour {
 	public int life = 100;
 	public float speed;
 
+	public GameObject pointsUp;
+
 	float currentX;
 	float lastX;
 
@@ -19,6 +21,8 @@ public class EnemyAI : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (life <= 0) {
+			Instantiate (pointsUp, transform.position, Quaternion.identity);
+			GameObject.Find("GameManager").GetComponent<GameManager>().points+=100;
 			GetComponentInChildren<explodeOnPlayer>().dead = true;
 		}
 
@@ -32,17 +36,10 @@ public class EnemyAI : MonoBehaviour {
 
 
 		playerPos = player.transform.position;
-
+		if(Vector3.Distance(playerPos, transform.position)<10){
 		transform.position = Vector3.Lerp (transform.position, playerPos, speed);
 		Vector3 dir = transform.position + Vector3.Normalize (player.transform.position - transform.position);
 		dir = transform.position +Vector3.forward*10f;
-		Debug.DrawLine(transform.position, dir, Color.red);
-		RaycastHit hit;
-		if(Physics.Raycast(transform.position, dir, out hit)){
-			print (hit.transform.name);
-
-
-			                             
 		}
 		lastX = currentX;
 	}
