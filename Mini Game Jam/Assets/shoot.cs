@@ -14,7 +14,7 @@ public class shoot : MonoBehaviour {
 	public float bulletKnockback;
 	public AudioClip shotSound;
 	public AudioClip shellSound;
-
+	public bool playShells = true;
 	// Use this for initialization
 	void Start () {
 		shootParticles = bulletSpawn.GetComponent<ParticleSystem> ();
@@ -57,9 +57,12 @@ public class shoot : MonoBehaviour {
 				GetComponent<AudioSource>().volume = Random.Range(0.2f, 0.1f);
 				GetComponent<AudioSource>().PlayOneShot(shotSound);
 				float rand = Random.Range (0f,1f);
-				if(rand>0.7f)
+				
+			if(playShells){
+				if(rand>0.7f){
 					StartCoroutine("waitAndPlayShell", 1f);
-
+				}
+			}
 				Vector2 randomDir = new Vector2(shootDir.x+Random.Range (-shotSpread,shotSpread), shootDir.y+Random.Range (-shotSpread,shotSpread));
 				Transform shot = Instantiate (bullet, bulletSpawn.position, transform.rotation) as Transform;			
 				//Debug.DrawRay(bulletSpawn.position, shootDir);

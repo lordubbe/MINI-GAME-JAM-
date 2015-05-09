@@ -18,7 +18,7 @@ public class waitAndKill : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.transform.tag == "Enemy") {
-			col.transform.GetComponent<EnemyAI> ().life -= 10;
+			col.transform.GetComponent<EnemyAI> ().life -= Random.Range (10,20);
 			Instantiate (bloodParticles, col.transform.position, Quaternion.identity);
 			col.GetComponent<AudioSource> ().clip = hit;
 			col.GetComponent<AudioSource> ().pitch = Random.Range (0.8f, 1.2f);

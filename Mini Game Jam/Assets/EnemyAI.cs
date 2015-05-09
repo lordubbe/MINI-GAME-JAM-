@@ -9,6 +9,9 @@ public class EnemyAI : MonoBehaviour {
 
 	public GameObject pointsUp;
 
+	public AudioClip[] shouts;
+
+
 	float currentX;
 	float lastX;
 
@@ -51,6 +54,9 @@ public class EnemyAI : MonoBehaviour {
 			yield return new WaitForSeconds(rand);
 			Vector3 vel = GetComponent<Rigidbody2D>().velocity;
 			vel = new Vector3(0, 0, 0);
+			if(Random.Range(0.0f,1.0f)>0.96f)
+			AudioSource.PlayClipAtPoint(shouts[Random.Range (0,shouts.Length-1)], transform.position, Random.Range (0.5f,1f));
+
 			GetComponent<Rigidbody2D>().AddForce(Vector2.up*10, ForceMode2D.Impulse);
 
 		}

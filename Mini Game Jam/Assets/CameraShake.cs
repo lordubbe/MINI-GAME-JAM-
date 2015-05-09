@@ -32,6 +32,6 @@ public class CameraShake : MonoBehaviour
 
 	void Update()
 	{
-		camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+		camTransform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
 	}
 }
