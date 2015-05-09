@@ -12,7 +12,7 @@ public class boostPlayer : MonoBehaviour {
 	}
 	IEnumerator buffAndKill(){
 		GetComponent<SpriteRenderer> ().enabled = false;
-		GetComponent<Collider> ().enabled = false;
+		GetComponent<Collider2D> ().enabled = false;
 		Instantiate (pickupParticles, transform.position, Quaternion.identity);
 
 		Instantiate (enemy, transform.position+new Vector3(2,4,0), Quaternion.identity);

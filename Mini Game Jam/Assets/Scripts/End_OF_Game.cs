@@ -17,7 +17,7 @@ public class End_OF_Game : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		if (other.gameObject.tag == "Player") {
-			Application.LoadLevel(1);
+			Application.LoadLevel(2);
 		}
 	}
 
