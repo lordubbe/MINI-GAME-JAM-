@@ -54,7 +54,7 @@ public class shoot : MonoBehaviour {
 
 
 				GetComponent<AudioSource>().pitch = Random.Range (1.5f, 2.0f);
-				GetComponent<AudioSource>().volume = Random.Range(0.3f, 0.4f);
+				GetComponent<AudioSource>().volume = Random.Range(0.2f, 0.1f);
 				GetComponent<AudioSource>().PlayOneShot(shotSound);
 				float rand = Random.Range (0f,1f);
 				if(rand>0.7f)
@@ -71,7 +71,7 @@ public class shoot : MonoBehaviour {
 	IEnumerator waitAndPlayShell (float seconds){
 		yield return new WaitForSeconds(seconds);
 		bulletSpawn.GetComponent<AudioSource>().pitch = Random.Range (0.8f, 1.6f);
-		bulletSpawn.GetComponent<AudioSource> ().volume = Random.Range (0.3f, 0.6f);
+		bulletSpawn.GetComponent<AudioSource> ().volume = Random.Range (0.2f, 0.4f);
 		bulletSpawn.GetComponent<AudioSource>().PlayOneShot(shellSound);
 	}
 	

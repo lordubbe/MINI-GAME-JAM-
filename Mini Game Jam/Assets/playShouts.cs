@@ -24,13 +24,14 @@ public class playShouts : MonoBehaviour {
 		while(true) {
 			if(gun.GetComponent<shoot> ().shooting){
 				float rand = Random.Range (0.0f,1.0f);
-				if(rand> 0.5f){
-					//play shout
-					print ("SHOUT!");
+				if(rand> 0.2f){
+					int random = Random.Range(0, shouts.Length-1);
+					print ("SHGOUT");
+					AudioSource.PlayClipAtPoint(shouts[random],Camera.main.transform.position, 1f);
 				}
 			}
 
-			yield return new WaitForSeconds(3f);
+			yield return new WaitForSeconds(2f);
 		}
 	}
 }
