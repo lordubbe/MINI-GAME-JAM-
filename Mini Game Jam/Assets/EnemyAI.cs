@@ -34,12 +34,24 @@ public class EnemyAI : MonoBehaviour {
 		dir = transform.position +Vector3.forward*10f;
 		Debug.DrawLine(transform.position, dir, Color.red);
 		RaycastHit hit;
-		if(Physics.Raycast(transform.position, dir, out hit, )){
+		if(Physics.Raycast(transform.position, dir, out hit)){
 			print (hit.transform.name);
 
 
 			                             
 		}
 		lastX = currentX;
+	}
+
+	IEnumerator jumpLikeStupid(){
+		while (true) {
+			//JUMP
+
+			yield return new WaitForSeconds(2.0f);
+			Vector3 vel = GetComponent<Rigidbody2D>().velocity;
+			vel = new Vector3(0, 0, 0);
+			GetComponent<Rigidbody2D>().AddForce(Vector2.up*10, ForceMode2D.Impulse);
+
+		}
 	}
 }
