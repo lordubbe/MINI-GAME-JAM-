@@ -60,9 +60,10 @@ public class shoot : MonoBehaviour {
 				if(rand>0.7f)
 					StartCoroutine("waitAndPlayShell", 1f);
 
-				Vector3 randomDir = new Vector3(shootDir.x+Random.Range (-shotSpread,shotSpread), shootDir.y+Random.Range (-shotSpread,shotSpread));
-				Transform shot = Instantiate (bullet, bulletSpawn.position, transform.rotation) as Transform;			Debug.DrawRay(bulletSpawn.position, shootDir);
-				shot.GetComponent<Rigidbody>().AddForce(randomDir+shootDir*bulletSpeed, ForceMode.Impulse);
+				Vector2 randomDir = new Vector2(shootDir.x+Random.Range (-shotSpread,shotSpread), shootDir.y+Random.Range (-shotSpread,shotSpread));
+				Transform shot = Instantiate (bullet, bulletSpawn.position, transform.rotation) as Transform;			
+				//Debug.DrawRay(bulletSpawn.position, shootDir);
+				shot.GetComponent<Rigidbody2D>().AddForce(randomDir+new Vector2(shootDir.x, shootDir.y)*bulletSpeed, ForceMode2D.Impulse);
 				yield return new WaitForSeconds (shootInterval);
 			}
 		}

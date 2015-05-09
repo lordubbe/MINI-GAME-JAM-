@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyAI : MonoBehaviour {
 	private Transform player;
 	private Vector3 playerPos;
-
+	public int life = 100;
 	public float speed;
 
 	float currentX;
@@ -18,6 +18,10 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (life <= 0) {
+			GetComponentInChildren<explodeOnPlayer>().dead = true;
+		}
+
 		currentX = transform.position.x;
 
 		if (lastX < currentX) {
@@ -46,8 +50,8 @@ public class EnemyAI : MonoBehaviour {
 	IEnumerator jumpLikeStupid(){
 		while (true) {
 			//JUMP
-
-			yield return new WaitForSeconds(2.0f);
+			float rand = Random.Range(0.8f, 3.5f);
+			yield return new WaitForSeconds(rand);
 			Vector3 vel = GetComponent<Rigidbody2D>().velocity;
 			vel = new Vector3(0, 0, 0);
 			GetComponent<Rigidbody2D>().AddForce(Vector2.up*10, ForceMode2D.Impulse);
