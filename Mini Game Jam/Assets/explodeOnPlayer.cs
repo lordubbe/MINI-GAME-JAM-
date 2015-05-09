@@ -10,18 +10,14 @@ public class explodeOnPlayer : MonoBehaviour {
 	void Start(){
 		player = GameObject.FindWithTag ("Player").transform;
 	}
+	
+	void Update(){
 
-	void OnTriggerEnter2D(Collider2D col){
-		if (col.transform.tag == "Player") {
-			print ("EXPLOSION!");
-			Debug.DrawRay(transform.position, player.transform.position, Color.red, 2f);
-			player.GetComponent<Rigidbody2D>().AddForce(Vector3.up*20f+Vector3.Normalize(player.transform.position-transform.position) * 10f, ForceMode2D.Impulse);
+		if (Vector3.Distance (transform.position, player.transform.position) < 1) {
 			dead = true;
+			player.GetComponent<Rigidbody2D>().AddForce(Vector3.up*20f+Vector3.Normalize(player.transform.position-transform.position) * 10f, ForceMode2D.Impulse);
 
 		}
-	}
-
-	void Update(){
 
 		if (dead) {
 			Instantiate(explosion2, transform.position, Quaternion.identity);
