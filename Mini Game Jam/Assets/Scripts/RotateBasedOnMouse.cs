@@ -27,9 +27,9 @@ public class RotateBasedOnMouse : MonoBehaviour {
 
 		//orient direction based on angle
 		if(angle > 90 && angle < 180 || angle > -180 && angle < -90){
-			transform.localScale = new Vector3(1, -0.2f, 1);
+			transform.localScale = new Vector3(1, -1, 1);
 		}else if(angle > -90 && angle < 90){
-			transform.localScale = new Vector3(1, 0.2f, 1);
+			transform.localScale = new Vector3(1, 1, 1);
 		}
 	}
 }
