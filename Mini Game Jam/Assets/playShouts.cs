@@ -26,7 +26,6 @@ public class playShouts : MonoBehaviour {
 				float rand = Random.Range (0.0f,1.0f);
 				if(rand> 0.2f){
 					int random = Random.Range(0, shouts.Length-1);
-					print ("SHGOUT");
 					AudioSource.PlayClipAtPoint(shouts[random],Camera.main.transform.position, 1f);
 				}
 			}
